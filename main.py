@@ -1,11 +1,16 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def accueil():
-    return render_template('accueil.html', var='Laboratoire 1')
+    if request.method == "POST":
+        name = request.form.get("name")
+        city = request.form.get("city")
+        return render_template('infos.html', name = name, city = city)
+    else :
+        return render_template('accueil.html', var='Laboratoire 1')
 
 
 @app.errorhandler(404)
