@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html>
 
+<head>
+  <h1>
+    {{var}}
+</h1>
+</head>
+
+<body>
+<form action="/action_page.php">
+  <label for="name">Nom :</label><br>
+  <input type="text" id="name" name="name"><br><br>
+  <label for="city">Ville :</label><br>
+  <input type="text" id="city" name="city"><br><br>
+  <input type="submit" value="Soumettre">
+</form>
+<img src="static/image.jpg" alt="Image questionnaire" width="200" height="250">
 </body>
+
 </html>
+

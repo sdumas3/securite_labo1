@@ -1,16 +1,17 @@
-# This is a sample Python script.
+from flask import Flask, render_template, url_for
 
-# Press Maj+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+app = Flask(__name__, template_folder='templates', static_folder='static')
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+@app.route("/")
+def accueil():
+    return render_template('accueil.html', var='Laboratoire 1')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+@app.errorhandler(404)
+def error_page(error):
+    return render_template('error404.html', error='Erreur 404, Page Non-Trouvée', img_error=url_for('static', filename='error.png')), 404
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
